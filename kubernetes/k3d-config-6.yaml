@@ -1,0 +1,13 @@
+---
+apiVersion: k3d.io/v1alpha4
+kind: Simple
+metadata:
+  name: k6
+servers: 1
+agents: 2
+image: docker.io/rancher/k3s:v1.23.8-k3s1
+ports:
+  - port: 8080:80 # same as `--port '8080:80@loadbalancer'`
+    nodeFilters:
+      - loadbalancer
+  - port: 30880:30880
